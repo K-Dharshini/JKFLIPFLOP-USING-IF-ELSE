@@ -1,14 +1,14 @@
-# JKFLIPFLOP-USING-IF-ELSE
+# JK FLIPFLOP-USING-IF-ELSE
 
 **AIM:** 
 
-To implement  JK flipflop using verilog and validating their functionality using their functional tables
+To implement JK flipflop using verilog and validating their functionality using their functional tables.
 
 **SOFTWARE REQUIRED:**
 
 Quartus prime
 
-**THEORY**
+**THEORY:**
 
 **JK Flip-Flop**
 
@@ -16,12 +16,10 @@ JK flip-flop is the modified version of SR flip-flop. It operates with only posi
 
 ![image](https://github.com/naavaneetha/JKFLIPFLOP-USING-IF-ELSE/assets/154305477/a649c30b-232b-4558-b188-fd6c09845180)
 
-
 This circuit has two inputs J & K and two outputs Qtt & Qtt’. The operation of JK flip-flop is similar to SR flip-flop. Here, we considered the inputs of SR flip-flop as S = J Qtt’ and R = KQtt in order to utilize the modified SR flip-flop for 4 combinations of inputs. The following table shows the state table of JK flip-flop.
 
 ![image](https://github.com/naavaneetha/JKFLIPFLOP-USING-IF-ELSE/assets/154305477/c4360742-e8a8-4937-b089-c46c0433f9a3)
 
- 
 Here, Qtt & Qt+1t+1 are present state & next state respectively. So, JK flip-flop can be used for one of these four functions such as Hold, Reset, Set & Complement of present state based on the input conditions, when positive transition of clock signal is applied. The following table shows the characteristic table of JK flip-flop. Present Inputs Present State Next State
  
 ![image](https://github.com/naavaneetha/JKFLIPFLOP-USING-IF-ELSE/assets/154305477/6c275261-a6d5-4c37-a3a7-1e88ca11c4cd)
@@ -32,17 +30,69 @@ By using three variable K-Map, we can get the simplified expression for next sta
 
 The maximum possible groupings of adjacent ones are already shown in the figure. Therefore, the simplified expression for next state Qt+1t+1 is Q(t+1)=JQ(t)′+K′Q(t)Q(t+1)=JQ(t)′+K′Q(t)
 
-**Procedure**
+**PROCEDURE:**
 
-/* write all the steps invloved */
+1. Go to quartus software.
+   
+2. Set new environment.
+   
+3. Type the code to implement SR flipflop using verilog and validating their functionality using their functional tables.
+   
+4. Run the program.
+   
+5. Give inputs in the waveform table.
+   
+6. Run the program.
 
-**PROGRAM**
+**PROGRAM:**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+~~~
+/* 
+Program for JK flipflops and verify its truth table in quartus using Verilog programming. 
+Developed by: DHARSHINI K 
+RegisterNumber: 212223230047
 */
+module EXP7(q, qb,j,k,clock,reset);
+ input j,k,clock,reset;
+ output reg q, qb;
+always @ (posedge (clock))
+ begin
+ if (!reset)
+ begin
+ q <= q;
+ qb <=qb;
+ end
 
-**RTL LOGIC FOR FLIPFLOPS**
+else
+begin
+ if (j == 0 && k == 0)
+ begin
+ q <= q;
+ qb <= qb;
+ end
+else if (j != k)
+ begin
+ q <= j;
+ qb <= k;
+ end
+ else if (j == 1 && k == 1)
+ begin
+ q <= ~q;
+ qb <= ~qb;
+ end
+ end
+end
+endmodule
+~~~
 
-**TIMING DIGRAMS FOR FLIP FLOPS**
+**RTL LOGIC FOR FLIPFLOPS:**
 
-**RESULTS**
+![image](https://github.com/K-Dharshini/JKFLIPFLOP-USING-IF-ELSE/assets/139334830/c3697a2e-ab18-4f81-a63e-da5e4749fc6c)
+
+**TIMING DIGRAMS FOR FLIP FLOPS:**
+
+![image](https://github.com/K-Dharshini/JKFLIPFLOP-USING-IF-ELSE/assets/139334830/4b718d44-574a-4c91-befa-8cf2c2fee79d)
+
+**RESULTS:**
+
+Implementation of JK flipflop using verilog and validating their functionality using their functional tables is executed and the output is verified successfully.
